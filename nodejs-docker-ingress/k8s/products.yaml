@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products
+spec:
+  selector:
+    matchLabels:
+      app: products
+  template:
+    metadata:
+      labels:
+        app: products
+    spec:
+      containers:
+      - name: products
+        image: products
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 3003
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-service
+spec:
+  type: NodePort
+  selector:
+    app: products
+  ports:
+  - port: 3003
+    targetPort: 3003
+    protocol: TCP
