@@ -1,6 +1,0 @@
-apiVersion: v1
-data:
-  port_number: "3001"
-kind: ConfigMap
-metadata:
-  name: my-config
